@@ -5,6 +5,7 @@ class Users {
     function __construct($dbconn) {
       $this->database = $dbconn;
     }
+    
     //users stuff
     public function userlogin($username, $password) {
        try {
@@ -169,12 +170,28 @@ class Users {
           return $this->link('user_todolist.php');
 
       }
+
       catch(PDOException $error) {
           echo $error->getMessage();
           return false;
       }
   }
-  //end of edit stuff
-}
+    public function adminupdateList($list_id, $updatelist) {
+      try {
+          $stment = $this->database->prepare("UPDATE lists SET list=:updatelist WHERE id=:list_id");
+          $stment->bindparam(":updatelist", $updatelist);
+          $stment->bindparam(":list_id", $list_id);
+          $stment->execute();
+          
+          return $this->link('viewusers.php');
 
+      }
+
+            catch(PDOException $error) {
+          echo $error->getMessage();
+          return false;
+      }
+  }
+
+}//User Class Close
 ?>

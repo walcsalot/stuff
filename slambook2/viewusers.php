@@ -1,7 +1,8 @@
 <?php
 
     include 'dbconn.php';
-    $users = $dbconn->query("SELECT * FROM user");  
+    $users = $dbconn->query("SELECT * FROM user");
+    $lists = $dbconn->query("SELECT * FROM lists");
 ?>
 
 
@@ -56,9 +57,14 @@
 
 </style>
 
-<header class="navbar border-bottom border-2 flex-md-nowrap p-0 shadow" style="width: 1999px; height: 60px; background-color:#892bcc;" data-bs-theme="dark">
+<header class="navbar border-bottom border-2 flex-md-nowrap p-0 shadow" style="width: auto; height: 60px; background-color:#892bcc;" data-bs-theme="dark">
     <a class="px-4 btn" style="color:darkblue" href="loggedout.php">Logout</a>
+
 </header><br><br>
+        <center> <label for="search"><b>Search Users:</label>
+        <input type="text" name="search" placeholder="Enter username" style="width: 400px;  padding: 2px;">
+        <li><form method="GET" action="search_users.php">
+        <button type="submit">Search</button> <center> <br>
    <table align = "center" border = "1" cellpadding = "3" cellspacing = "0">
    <center><h1>Account User</h1><br>
    		<tr>
@@ -78,10 +84,29 @@
             <td> <a href="user_edit_page.php?id=<?php echo $user['id']; ?>"style="color: green;">Edit</a>
             <a href="deleteuser.php?id=<?php echo $user['id']; ?>" style="color: red;">Remove</a>
             </td>
-
+      <?php endwhile; ?>
    		</tr>
-   	<?php endwhile; ?>
+      </table>
+      <br><br>
+      <table align = "center" border = "1" cellpadding = "3" cellspacing = "0">
+           <center><h1>User Lists</h1><br>
+         <tr>
+            <th>ID</th>
+            <th>User Lists</th>
+            <th>User_ID</th>
+            <th>Edit List</th>
+         </tr>
 
+         <?php while($list = $lists->fetch(PDO::FETCH_ASSOC)): ?>
+         <tr>
+            <td><?php echo $list['id']; ?> </td>
+            <td><?php echo $list['list']; ?> </td>
+            <td><?php echo $list['user_id']; ?> </td'>
+            <td> <a href="admin_editlist.php?id=<?php echo $list['id']; ?>"style="color: green;">Edit</a>
+            <a href="admindeletelist.php?list_id=<?php echo $list['id']; ?>" style="color: red;">Remove</a>
+            </td>
+   	<?php endwhile; ?>
+         </tr>
    </table>
 </body>
 </html>

@@ -1,15 +1,4 @@
-<?php
 
-	include 'dbconn.php';
-
-    if ($connect->already_login()!="") {
-    	$connect->link('user_dboard.php');
-    }
-
-	if (isset($_POST['submit'])) {
-        $connect->verifylogin($_POST);
-    }
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,10 +32,22 @@
 	</style>
 
 	<center> <div class="container shadow" style="max-width: 350px; background-color: white;">
-
+      
 
 		 <h2>Login here!</h2> <br>
+     <?php
 
+	include 'dbconn.php';
+
+    if ($connect->already_login()!="") {
+    	$connect->link('user_dboard.php');
+    }
+
+	if (isset($_POST['submit'])) {
+        $connect->verifylogin($_POST);
+    }
+?>
+     
 		<form method="POST">
 		 <div class="form-group mb-2 form-floating">
 		 	<input type="text" name="username" class="form-control">

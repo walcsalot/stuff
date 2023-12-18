@@ -1,15 +1,4 @@
-<?php
-    include 'dbconn.php';
 
-    if ($connect->already_login()!="") {
-       $connect->link('user_dboard.php?Already logged in!');
-    }
-
-    //submit
-    if (isset ($_POST['submit']) ) {
-        $connect->verifyaddUsers($_POST);
-    }
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +37,18 @@
 		
 
 			<h2> Register </h2> <br>
+			<?php
+    include 'dbconn.php';
 
+    if ($connect->already_login()!="") {
+       $connect->link('user_dboard.php?Already logged in!');
+    }
+
+    //submit
+    if (isset ($_POST['submit']) ) {
+        $connect->verifyaddUsers($_POST);
+    }
+?>
 		 <div class="row">
 		 	<form method="POST">
 

@@ -89,11 +89,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['search'])) {
     if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['search'])) {
         $search_query = $_GET['search'];
 
-        $sql = "SELECT * FROM user WHERE username LIKE ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $search_query);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        $stment = $dbconn->prepare("SELECT * FROM user WHERE username LIKE ?");
+        $stment->bind_param("s", $search_query);
+        $stment->execute();
+        $connect = $stment->fetchAll(PDO::FETCH_ASSOC);
 
         echo "<h2>Search Results</h2>";
 

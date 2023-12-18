@@ -37,10 +37,6 @@
         <li><a class="navbar-brand fas fa-home  col-1 me-0 px-5 fs-10 text-white" href="user_dboard.php">Home</a></li>
         <li><a class="navbar-brand fas fa-user col-1 me-0 px-5 fs-8 text-white" href="user_todolist.php">To-Do List</a></li>
         <li><a class="navbar-brand fas fa-user-cog col-1 me-0 px-5 fs-8 text-white" href="Profile.php">Profile</a></li>
-        <li><form method="GET" action="search_users.php">
-        <label for="search"><b>Search Users:</label>
-        <input type="text" name="search" placeholder="Enter username" style="width: 400px;  padding: 2px;">
-        <button type="submit">Search</button>
     </form>
     </ul>
     <a class="navbar-brand fas fa-sign-out-alt " style="color:darkblue" href="loggedout.php">Logout</a>
