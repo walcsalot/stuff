@@ -1,8 +1,9 @@
 <?php
 
     include 'dbconn.php';
-    $users = $dbconn->query("SELECT * FROM user");
     $lists = $dbconn->query("SELECT * FROM lists");
+    $search = isset($_POST['search']) ? $_POST['search'] : '';
+    $users = $dbconn->query("SELECT * FROM user WHERE username LIKE '%$search%' OR name LIKE '%$search%' ORDER BY id DESC");
 ?>
 
 
@@ -62,9 +63,10 @@
 
 </header><br><br>
         <center> <label for="search"><b>Search Users:</label>
-        <input type="text" name="search" placeholder="Enter username" style="width: 400px;  padding: 2px;">
-        <li><form method="GET" action="search_users.php">
+        <form method="POST" action="viewusers.php" role="search">
+        <input type="text" name="search" placeholder="Enter Name or Username" style="width: 400px;  padding: 2px;">
         <button type="submit">Search</button> <center> <br>
+        </form>
    <table align = "center" border = "1" cellpadding = "3" cellspacing = "0">
    <center><h1>Account User</h1><br>
    		<tr>

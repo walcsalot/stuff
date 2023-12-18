@@ -43,7 +43,7 @@
 </header>
 	
 <center> <div class="container" style="background-color: white; max-width: auto; max-height: 10px;">
-			 <center> <h3> Hello, <?=$user['name']?></h3> <br> <br> </center>
+			 <center> <h2> Hello, <?=$user['name']?></h2> <br> <br> </center>
 		</div> </center>
 </body>
 </html>
